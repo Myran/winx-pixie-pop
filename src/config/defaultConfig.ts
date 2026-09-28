@@ -124,7 +124,7 @@ export const DEFAULT_STAGE_CONFIG: StageConfig = {
   },
   "timer": {
     "enabled": true,
-    "duration": 60,
+    "duration": 75,
     "barWidth": 470,
     "barHeight": 18,
     "barTop": 134,

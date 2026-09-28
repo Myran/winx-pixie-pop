@@ -5,7 +5,10 @@
 
 // Web Audio synthesizer for crisp, satisfying fairy gem pop chain reaction chimes
 
+const MASTER_VOLUME = 0.95;
+
 let audioCtx: AudioContext | null = null;
+let masterGain: GainNode | null = null;
 
 function getAudioContext(): AudioContext | null {
   if (typeof window === 'undefined') return null;
@@ -13,12 +16,19 @@ function getAudioContext(): AudioContext | null {
     const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
     if (AudioContextClass) {
       audioCtx = new AudioContextClass();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.value = MASTER_VOLUME;
+      masterGain.connect(audioCtx.destination);
     }
   }
   if (audioCtx && audioCtx.state === 'suspended') {
     audioCtx.resume().catch(() => {});
   }
   return audioCtx;
+}
+
+function output(ctx: AudioContext): AudioNode {
+  return masterGain ?? ctx.destination;
 }
 
 // Pentatonic frequencies for chain reaction cascades
@@ -63,7 +73,7 @@ export function playPopChime(stepIndex: number = 0, enabled: boolean = true) {
 
     osc.connect(gainNode);
     osc2.connect(gainNode);
-    gainNode.connect(ctx.destination);
+    gainNode.connect(output(ctx));
 
     osc.start(now);
     osc2.start(now);
@@ -126,7 +136,7 @@ export function playSwapSound(enabled: boolean = true) {
 
     noiseSource.connect(bandpass);
     bandpass.connect(noiseGain);
-    noiseGain.connect(ctx.destination);
+    noiseGain.connect(output(ctx));
 
     // 2. Underlying tonal body glide (adds depth and weight to the motion)
     const tonalOsc = ctx.createOscillator();
@@ -141,7 +151,7 @@ export function playSwapSound(enabled: boolean = true) {
     tonalGain.gain.exponentialRampToValueAtTime(0.0001, now + duration * 0.85);
 
     tonalOsc.connect(tonalGain);
-    tonalGain.connect(ctx.destination);
+    tonalGain.connect(output(ctx));
 
     noiseSource.start(now);
     tonalOsc.start(now);
@@ -178,7 +188,7 @@ export function playDepletedSound(enabled: boolean = true) {
 
     osc.connect(filter);
     filter.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(output(ctx));
 
     osc.start(now);
     osc.stop(now + 0.23);
@@ -223,7 +233,7 @@ export function playEnemyPulseSound(enabled: boolean = true) {
     osc.connect(filter);
     osc2.connect(filter);
     filter.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(output(ctx));
 
     osc.start(now);
     osc2.start(now);
@@ -261,7 +271,7 @@ export function playEnemyDeflectSound(enabled: boolean = true) {
 
     osc.connect(filter);
     filter.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(output(ctx));
 
     osc.start(now);
     osc.stop(now + 0.17);
@@ -306,7 +316,7 @@ export function playEnemyHitSound(enabled: boolean = true) {
     oscStrike.connect(filter);
     oscCrystal.connect(filter);
     filter.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(output(ctx));
 
     oscStrike.start(now);
     oscCrystal.start(now);
@@ -340,7 +350,7 @@ export function playEnemyDefeatSound(enabled: boolean = true) {
     subGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.0);
 
     subOsc.connect(subGain);
-    subGain.connect(ctx.destination);
+    subGain.connect(output(ctx));
     subOsc.start(now);
     subOsc.stop(now + 1.05);
 
@@ -358,7 +368,7 @@ export function playEnemyDefeatSound(enabled: boolean = true) {
       gain.gain.exponentialRampToValueAtTime(0.0001, noteTime + 0.6);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(output(ctx));
       osc.start(noteTime);
       osc.stop(noteTime + 0.65);
     });
@@ -396,7 +406,7 @@ export function playDragonFlameSound(enabled: boolean = true) {
 
     subOsc.connect(filter);
     filter.connect(subGain);
-    subGain.connect(ctx.destination);
+    subGain.connect(output(ctx));
     subOsc.start(now);
     subOsc.stop(now + 0.62);
 
@@ -412,7 +422,7 @@ export function playDragonFlameSound(enabled: boolean = true) {
     sparkGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.38);
 
     sparkOsc.connect(sparkGain);
-    sparkGain.connect(ctx.destination);
+    sparkGain.connect(output(ctx));
     sparkOsc.start(now);
     sparkOsc.stop(now + 0.4);
   } catch {
@@ -445,7 +455,7 @@ export function playPrismRaySound(enabled: boolean = true) {
       gain.gain.exponentialRampToValueAtTime(0.0001, noteTime + 0.35);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(output(ctx));
       osc.start(noteTime);
       osc.stop(noteTime + 0.38);
     });
@@ -484,7 +494,7 @@ export function playEnergySurgeSound(enabled: boolean = true) {
 
     osc.connect(gain);
     oscHarmonic.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(output(ctx));
 
     osc.start(now);
     oscHarmonic.start(now);
@@ -524,7 +534,7 @@ export function playPortalWhooshSound(enabled: boolean = true) {
 
     osc.connect(filter);
     filter.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(output(ctx));
 
     osc.start(now);
     osc.stop(now + 0.6);
@@ -557,7 +567,7 @@ export function playHeartCharmSound(enabled: boolean = true) {
       gain.gain.exponentialRampToValueAtTime(0.0001, noteTime + 0.4);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(output(ctx));
       osc.start(noteTime);
       osc.stop(noteTime + 0.42);
     });
@@ -590,7 +600,7 @@ export function playDreamLullabySound(enabled: boolean = true) {
       gain.gain.exponentialRampToValueAtTime(0.0001, noteTime + 0.5);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(output(ctx));
       osc.start(noteTime);
       osc.stop(noteTime + 0.52);
     });
@@ -624,7 +634,7 @@ export function playTimeFreezeSound(enabled: boolean = true) {
       gain.gain.exponentialRampToValueAtTime(0.0001, noteTime + 0.7);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(output(ctx));
       osc.start(noteTime);
       osc.stop(noteTime + 0.75);
     });
@@ -641,7 +651,7 @@ export function playTimeFreezeSound(enabled: boolean = true) {
     sweepGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
 
     sweep.connect(sweepGain);
-    sweepGain.connect(ctx.destination);
+    sweepGain.connect(output(ctx));
     sweep.start(now);
     sweep.stop(now + 0.55);
   } catch {
@@ -676,7 +686,7 @@ export function playImmovableBreakSound(enabled: boolean = true) {
 
     osc.connect(filter);
     filter.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(output(ctx));
 
     osc.start(now);
     osc.stop(now + 0.4);
@@ -708,7 +718,7 @@ export function playTimeUpSound(enabled: boolean = true) {
       gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.12 + 0.28);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(output(ctx));
       osc.start(now + idx * 0.12);
       osc.stop(now + idx * 0.12 + 0.3);
     });
@@ -739,7 +749,7 @@ export function playPurchaseSuccessSound(enabled: boolean = true) {
       gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.05 + 0.35);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(output(ctx));
       osc.start(now + i * 0.05);
       osc.stop(now + i * 0.05 + 0.4);
     });
@@ -787,7 +797,7 @@ export function playStageClearedSound(enabled: boolean = true) {
 
       osc.connect(gain);
       osc2.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(output(ctx));
 
       osc.start(now + n.time);
       osc2.start(now + n.time);
@@ -810,7 +820,7 @@ export function playStageClearedSound(enabled: boolean = true) {
       sGain.gain.exponentialRampToValueAtTime(0.0001, sTime + 0.4);
 
       sOsc.connect(sGain);
-      sGain.connect(ctx.destination);
+      sGain.connect(output(ctx));
 
       sOsc.start(sTime);
       sOsc.stop(sTime + 0.45);
@@ -842,7 +852,7 @@ export function playCoinFlySound(enabled: boolean = true) {
     gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(output(ctx));
 
     osc.start(now);
     osc.stop(now + 0.25);
@@ -879,7 +889,7 @@ export function playCoinCollectSound(enabled: boolean = true, pitchOffset: numbe
 
     osc.connect(gain);
     oscHarmonic.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(output(ctx));
 
     osc.start(now);
     oscHarmonic.start(now);
@@ -940,7 +950,7 @@ export function playGemTapDrrrSound(enabled: boolean = true) {
     carrier.connect(filter);
     harmonic.connect(filter);
     filter.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(output(ctx));
 
     carrier.start(now);
     harmonic.start(now);

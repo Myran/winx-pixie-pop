@@ -1,0 +1,8 @@
+{
+  "name": "Winx Club: Pixie Pop! | Prototype v0.9",
+  "description": "Game prototype featuring a 603x1311 viewport, top notch island, zero-gap hexagonal stage, and live debug sliders.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

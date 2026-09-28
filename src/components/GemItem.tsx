@@ -32,26 +32,26 @@ interface GemItemProps {
   smallEnemyRotateDirection?: 'clockwise' | 'counterclockwise';
 }
 
-const ENEMY_GEM_IMAGE_PRIMARY = '/enemy/shadow_core.png';
-const ENEMY_GEM_IMAGE_FALLBACK = '/enemy/shadow_core.png';
+const ENEMY_GEM_IMAGE_PRIMARY = 'enemy/shadow_core.png';
+const ENEMY_GEM_IMAGE_FALLBACK = 'enemy/shadow_core.png';
 
-const AISHA_GEM_IMAGE_PRIMARY = '/gems/aisha.png';
-const AISHA_GEM_IMAGE_FALLBACK = '/gems/aisha.png';
+const AISHA_GEM_IMAGE_PRIMARY = 'gems/aisha.png';
+const AISHA_GEM_IMAGE_FALLBACK = 'gems/aisha.png';
 
-const BLOOM_GEM_IMAGE_PRIMARY = '/gems/bloom.png';
-const BLOOM_GEM_IMAGE_FALLBACK = '/gems/bloom.png';
+const BLOOM_GEM_IMAGE_PRIMARY = 'gems/bloom.png';
+const BLOOM_GEM_IMAGE_FALLBACK = 'gems/bloom.png';
 
-const STELLA_GEM_IMAGE_PRIMARY = '/gems/stella.png';
-const STELLA_GEM_IMAGE_FALLBACK = '/gems/stella.png';
+const STELLA_GEM_IMAGE_PRIMARY = 'gems/stella.png';
+const STELLA_GEM_IMAGE_FALLBACK = 'gems/stella.png';
 
-const FLORA_GEM_IMAGE_PRIMARY = '/gems/flora.png';
-const FLORA_GEM_IMAGE_FALLBACK = '/gems/flora.png';
+const FLORA_GEM_IMAGE_PRIMARY = 'gems/flora.png';
+const FLORA_GEM_IMAGE_FALLBACK = 'gems/flora.png';
 
-const TECNA_GEM_IMAGE_PRIMARY = '/gems/tecna.png';
-const TECNA_GEM_IMAGE_FALLBACK = '/gems/tecna.png';
+const TECNA_GEM_IMAGE_PRIMARY = 'gems/tecna.png';
+const TECNA_GEM_IMAGE_FALLBACK = 'gems/tecna.png';
 
-const MUSA_GEM_IMAGE_PRIMARY = '/gems/musa.png';
-const MUSA_GEM_IMAGE_FALLBACK = '/gems/musa.png';
+const MUSA_GEM_IMAGE_PRIMARY = 'gems/musa.png';
+const MUSA_GEM_IMAGE_FALLBACK = 'gems/musa.png';
 
 /**
  * Generic Custom Fairy Gem Component.

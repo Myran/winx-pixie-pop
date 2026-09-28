@@ -40,7 +40,7 @@ export const DEFAULT_STAGE_CONFIG: StageConfig = {
   "notchVisible": true,
   "zoomMode": "fit",
   "customZoom": 75,
-  "backgroundImage": "/background01.jpeg",
+  "backgroundImage": "background01.jpeg",
   "gems": {
     "size": 44,
     "theme": "gem",
@@ -72,12 +72,12 @@ export const DEFAULT_STAGE_CONFIG: StageConfig = {
       "aisha": "#2FD9C4"
     },
     "customImages": {
-      "bloom": "/gems/bloom.png",
-      "stella": "/gems/stella.png",
-      "flora": "/gems/flora.png",
-      "musa": "/gems/musa.png",
-      "tecna": "/gems/tecna.png",
-      "aisha": "/gems/aisha.png"
+      "bloom": "gems/bloom.png",
+      "stella": "gems/stella.png",
+      "flora": "gems/flora.png",
+      "musa": "gems/musa.png",
+      "tecna": "gems/tecna.png",
+      "aisha": "gems/aisha.png"
     }
   },
   "animation": {
@@ -169,8 +169,8 @@ export const DEFAULT_STAGE_CONFIG: StageConfig = {
     "smallEnemySize": 44,
     "smallEnemyRotation": 30,
     "bigEnemyRotation": 90,
-    "imageUrl": "/enemy/shadow_core.png",
-    "companionImageUrl": "/enemy/companion.png",
+    "imageUrl": "enemy/shadow_core.png",
+    "companionImageUrl": "enemy/companion.png",
     "enemyHexBgStart": "#250238",
     "enemyHexBgMid": "#3b0764",
     "enemyHexBgEnd": "#18002a",
@@ -191,8 +191,8 @@ export const DEFAULT_STAGE_CONFIG: StageConfig = {
     "glowIntensity": 100
   },
   "currencies": {
-    "softCurrencyIcon": "/currencies/coin.png",
-    "hardCurrencyIcon": "/currencies/crystal.png",
+    "softCurrencyIcon": "currencies/coin.png",
+    "hardCurrencyIcon": "currencies/crystal.png",
     "softCurrencyName": "Pixie Coins",
     "hardCurrencyName": "Magic Crystals",
     "startingSoftCurrency": 2450,

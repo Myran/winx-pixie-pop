@@ -10,16 +10,16 @@
  * 100% availability worldwide.
  */
 export const KNOWN_IMGUR_MAP: Record<string, string> = {
-  'pmbYkdQ': '/currencies/coin.png',
-  'KQIldQr': '/currencies/crystal.png',
-  'PksiFVh': '/gems/bloom.png',
-  'dYZk9hI': '/gems/stella.png',
-  '1IEPC8W': '/gems/flora.png',
-  'vb31Tfo': '/gems/musa.png',
-  'VJwWxvy': '/gems/tecna.png',
-  'IIrisg2': '/gems/aisha.png',
-  'xFN0qeM': '/enemy/shadow_core.png',
-  'tTK7L5j': '/enemy/companion.png',
+  'pmbYkdQ': 'currencies/coin.png',
+  'KQIldQr': 'currencies/crystal.png',
+  'PksiFVh': 'gems/bloom.png',
+  'dYZk9hI': 'gems/stella.png',
+  '1IEPC8W': 'gems/flora.png',
+  'vb31Tfo': 'gems/musa.png',
+  'VJwWxvy': 'gems/tecna.png',
+  'IIrisg2': 'gems/aisha.png',
+  'xFN0qeM': 'enemy/shadow_core.png',
+  'tTK7L5j': 'enemy/companion.png',
 };
 
 /**
@@ -46,5 +46,5 @@ export function normalizeImgurUrl(url?: string): string {
   return trimmed;
 }
 
-export const DEFAULT_SOFT_CURRENCY_ICON = '/currencies/coin.png';
-export const DEFAULT_HARD_CURRENCY_ICON = '/currencies/crystal.png';
+export const DEFAULT_SOFT_CURRENCY_ICON = 'currencies/coin.png';
+export const DEFAULT_HARD_CURRENCY_ICON = 'currencies/crystal.png';

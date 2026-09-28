@@ -57,11 +57,11 @@ export const EnemyGemItem: React.FC<EnemyGemItemProps> = ({
     : 0;
 
   const [enemyImgUrl, setEnemyImgUrl] = useState(
-    normalizeImgurUrl(config.imageUrl) || '/enemy/shadow_core.png'
+    normalizeImgurUrl(config.imageUrl) || 'enemy/shadow_core.png'
   );
   useEffect(() => {
     if (config.imageUrl) {
-      setEnemyImgUrl(normalizeImgurUrl(config.imageUrl) || '/enemy/shadow_core.png');
+      setEnemyImgUrl(normalizeImgurUrl(config.imageUrl) || 'enemy/shadow_core.png');
     }
   }, [config.imageUrl]);
   const rotation = config.bigEnemyRotation ?? 90;
@@ -191,7 +191,7 @@ export const EnemyGemItem: React.FC<EnemyGemItemProps> = ({
               height={outerRadius * 2}
               preserveAspectRatio="xMidYMid meet"
               filter="url(#single-enemy-glow)"
-              onError={() => setEnemyImgUrl('/enemy/shadow_core.png')}
+              onError={() => setEnemyImgUrl('enemy/shadow_core.png')}
             />
 
             {/* Deflection / hover outer aura rim */}

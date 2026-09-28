@@ -107,9 +107,9 @@ export const EndGamePurchaseModal: React.FC<EndGamePurchaseModalProps> = ({
 
   if (!isOpen) return null;
 
-  const defaultImageUrl = '/enemy/companion.png';
+  const defaultImageUrl = 'enemy/companion.png';
   const characterImageUrl = imgError
-    ? '/enemy/companion.png'
+    ? 'enemy/companion.png'
     : (propCharacterImageUrl ? (normalizeImgurUrl(propCharacterImageUrl) || propCharacterImageUrl) : defaultImageUrl);
 
   const handlePurchaseWithGems = () => {

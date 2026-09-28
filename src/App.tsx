@@ -42,7 +42,7 @@ export default function App() {
           ...DEFAULT_STAGE_CONFIG,
           ...parsed,
           stageBgColor,
-          backgroundImage: parsed.backgroundImage || DEFAULT_STAGE_CONFIG.backgroundImage || '/background01.jpeg',
+          backgroundImage: parsed.backgroundImage || DEFAULT_STAGE_CONFIG.backgroundImage || 'background01.jpeg',
           gridRadius,
           hexRadius,
           gems: {
@@ -59,12 +59,12 @@ export default function App() {
             },
             customImages: {
               ...DEFAULT_STAGE_CONFIG.gems.customImages,
-              bloom: normalizeImgurUrl(parsed.gems?.customImages?.bloom) || DEFAULT_STAGE_CONFIG.gems.customImages?.bloom || '/gems/bloom.png',
-              stella: normalizeImgurUrl(parsed.gems?.customImages?.stella) || DEFAULT_STAGE_CONFIG.gems.customImages?.stella || '/gems/stella.png',
-              flora: normalizeImgurUrl(parsed.gems?.customImages?.flora) || DEFAULT_STAGE_CONFIG.gems.customImages?.flora || '/gems/flora.png',
-              musa: normalizeImgurUrl(parsed.gems?.customImages?.musa) || DEFAULT_STAGE_CONFIG.gems.customImages?.musa || '/gems/musa.png',
-              tecna: normalizeImgurUrl(parsed.gems?.customImages?.tecna) || DEFAULT_STAGE_CONFIG.gems.customImages?.tecna || '/gems/tecna.png',
-              aisha: normalizeImgurUrl(parsed.gems?.customImages?.aisha) || DEFAULT_STAGE_CONFIG.gems.customImages?.aisha || '/gems/aisha.png',
+              bloom: normalizeImgurUrl(parsed.gems?.customImages?.bloom) || DEFAULT_STAGE_CONFIG.gems.customImages?.bloom || 'gems/bloom.png',
+              stella: normalizeImgurUrl(parsed.gems?.customImages?.stella) || DEFAULT_STAGE_CONFIG.gems.customImages?.stella || 'gems/stella.png',
+              flora: normalizeImgurUrl(parsed.gems?.customImages?.flora) || DEFAULT_STAGE_CONFIG.gems.customImages?.flora || 'gems/flora.png',
+              musa: normalizeImgurUrl(parsed.gems?.customImages?.musa) || DEFAULT_STAGE_CONFIG.gems.customImages?.musa || 'gems/musa.png',
+              tecna: normalizeImgurUrl(parsed.gems?.customImages?.tecna) || DEFAULT_STAGE_CONFIG.gems.customImages?.tecna || 'gems/tecna.png',
+              aisha: normalizeImgurUrl(parsed.gems?.customImages?.aisha) || DEFAULT_STAGE_CONFIG.gems.customImages?.aisha || 'gems/aisha.png',
             },
             colors: {
               ...DEFAULT_STAGE_CONFIG.gems.colors,
@@ -93,11 +93,11 @@ export default function App() {
             imageUrl:
               normalizeImgurUrl(parsed.enemyGem?.imageUrl) ||
               DEFAULT_STAGE_CONFIG.enemyGem.imageUrl ||
-              '/enemy/shadow_core.png',
+              'enemy/shadow_core.png',
             companionImageUrl:
               normalizeImgurUrl(parsed.enemyGem?.companionImageUrl) ||
               DEFAULT_STAGE_CONFIG.enemyGem.companionImageUrl ||
-              '/enemy/companion.png',
+              'enemy/companion.png',
             healthBarHeight:
               parsed.enemyGem?.healthBarHeight === 12 || !parsed.enemyGem?.healthBarHeight
                 ? 16
@@ -123,11 +123,11 @@ export default function App() {
             softCurrencyIcon:
               normalizeImgurUrl(parsed.currencies?.softCurrencyIcon) ||
               DEFAULT_STAGE_CONFIG.currencies?.softCurrencyIcon ||
-              '/currencies/coin.png',
+              'currencies/coin.png',
             hardCurrencyIcon:
               normalizeImgurUrl(parsed.currencies?.hardCurrencyIcon) ||
               DEFAULT_STAGE_CONFIG.currencies?.hardCurrencyIcon ||
-              '/currencies/crystal.png',
+              'currencies/crystal.png',
             softCurrencyLeft: parsed.currencies?.softCurrencyLeft ?? DEFAULT_STAGE_CONFIG.currencies?.softCurrencyLeft ?? 46,
             hardCurrencyRight: parsed.currencies?.hardCurrencyRight ?? DEFAULT_STAGE_CONFIG.currencies?.hardCurrencyRight ?? 46,
             topBarYOffset: parsed.currencies?.topBarYOffset ?? DEFAULT_STAGE_CONFIG.currencies?.topBarYOffset ?? 0,
@@ -265,7 +265,7 @@ export default function App() {
       <div
         className="absolute inset-0 pointer-events-none select-none opacity-20 filter blur-3xl scale-110 overflow-hidden"
         style={{
-          backgroundImage: `url(${config.backgroundImage || '/background01.jpeg'})`,
+          backgroundImage: `url(${config.backgroundImage || 'background01.jpeg'})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

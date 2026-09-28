@@ -519,8 +519,8 @@ export const DebugMenu: React.FC<DebugMenuProps> = ({
                       tag: 'Dragon Flame Fairy (Blue)',
                       color: '#3E63FF',
                       imgurUrl: 'https://imgur.com/PksiFVh',
-                      directUrl: config.gems.customImages?.bloom || '/gems/bloom.png',
-                      defaultDirect: '/gems/bloom.png',
+                      directUrl: config.gems.customImages?.bloom || 'gems/bloom.png',
+                      defaultDirect: 'gems/bloom.png',
                       onUpdate: (url: string) => updateGemImage('bloom', url),
                     },
                     {
@@ -529,8 +529,8 @@ export const DebugMenu: React.FC<DebugMenuProps> = ({
                       tag: 'Sun & Light Fairy (Yellow)',
                       color: '#FFB238',
                       imgurUrl: 'https://imgur.com/dYZk9hI',
-                      directUrl: config.gems.customImages?.stella || '/gems/stella.png',
-                      defaultDirect: '/gems/stella.png',
+                      directUrl: config.gems.customImages?.stella || 'gems/stella.png',
+                      defaultDirect: 'gems/stella.png',
                       onUpdate: (url: string) => updateGemImage('stella', url),
                     },
                     {
@@ -539,8 +539,8 @@ export const DebugMenu: React.FC<DebugMenuProps> = ({
                       tag: 'Nature Fairy (Green/Pink)',
                       color: '#3CD070',
                       imgurUrl: 'https://imgur.com/1IEPC8W',
-                      directUrl: config.gems.customImages?.flora || '/gems/flora.png',
-                      defaultDirect: '/gems/flora.png',
+                      directUrl: config.gems.customImages?.flora || 'gems/flora.png',
+                      defaultDirect: 'gems/flora.png',
                       onUpdate: (url: string) => updateGemImage('flora', url),
                     },
                     {
@@ -549,8 +549,8 @@ export const DebugMenu: React.FC<DebugMenuProps> = ({
                       tag: 'Music Fairy (Red)',
                       color: '#FF4F5E',
                       imgurUrl: 'https://imgur.com/vb31Tfo',
-                      directUrl: config.gems.customImages?.musa || '/gems/musa.png',
-                      defaultDirect: '/gems/musa.png',
+                      directUrl: config.gems.customImages?.musa || 'gems/musa.png',
+                      defaultDirect: 'gems/musa.png',
                       onUpdate: (url: string) => updateGemImage('musa', url),
                     },
                     {
@@ -559,8 +559,8 @@ export const DebugMenu: React.FC<DebugMenuProps> = ({
                       tag: 'Technology Fairy',
                       color: '#9B59FF',
                       imgurUrl: 'https://imgur.com/VJwWxvy',
-                      directUrl: config.gems.customImages?.tecna || '/gems/tecna.png',
-                      defaultDirect: '/gems/tecna.png',
+                      directUrl: config.gems.customImages?.tecna || 'gems/tecna.png',
+                      defaultDirect: 'gems/tecna.png',
                       onUpdate: (url: string) => updateGemImage('tecna', url),
                     },
                     {
@@ -569,8 +569,8 @@ export const DebugMenu: React.FC<DebugMenuProps> = ({
                       tag: 'Droplet / Water',
                       color: '#2FD9C4',
                       imgurUrl: 'https://imgur.com/IIrisg2',
-                      directUrl: config.gems.customImages?.aisha || '/gems/aisha.png',
-                      defaultDirect: '/gems/aisha.png',
+                      directUrl: config.gems.customImages?.aisha || 'gems/aisha.png',
+                      defaultDirect: 'gems/aisha.png',
                       onUpdate: (url: string) => updateGemImage('aisha', url),
                     },
                   ].map((asset) => (
@@ -661,42 +661,42 @@ export const DebugMenu: React.FC<DebugMenuProps> = ({
                         key: 'bloom',
                         name: 'Bloom',
                         defaultColor: '#3E63FF',
-                        defaultImg: '/gems/bloom.png',
+                        defaultImg: 'gems/bloom.png',
                         imgurUrl: 'https://imgur.com/PksiFVh',
                       },
                       {
                         key: 'stella',
                         name: 'Stella',
                         defaultColor: '#FFB238',
-                        defaultImg: '/gems/stella.png',
+                        defaultImg: 'gems/stella.png',
                         imgurUrl: 'https://imgur.com/dYZk9hI',
                       },
                       {
                         key: 'flora',
                         name: 'Flora',
                         defaultColor: '#FF9AC5',
-                        defaultImg: '/gems/flora.png',
+                        defaultImg: 'gems/flora.png',
                         imgurUrl: 'https://imgur.com/1IEPC8W',
                       },
                       {
                         key: 'musa',
                         name: 'Musa',
                         defaultColor: '#FF4F5E',
-                        defaultImg: '/gems/musa.png',
+                        defaultImg: 'gems/musa.png',
                         imgurUrl: 'https://imgur.com/vb31Tfo',
                       },
                       {
                         key: 'tecna',
                         name: 'Tecna',
                         defaultColor: '#9B59FF',
-                        defaultImg: '/gems/tecna.png',
+                        defaultImg: 'gems/tecna.png',
                         imgurUrl: 'https://imgur.com/VJwWxvy',
                       },
                       {
                         key: 'aisha',
                         name: 'Aisha',
                         defaultColor: '#2FD9C4',
-                        defaultImg: '/gems/aisha.png',
+                        defaultImg: 'gems/aisha.png',
                         imgurUrl: 'https://imgur.com/IIrisg2',
                       },
                     ] as const
@@ -706,17 +706,17 @@ export const DebugMenu: React.FC<DebugMenuProps> = ({
                     const customImg =
                       (config.gems.customImages?.[gem.key] ? normalizeImgurUrl(config.gems.customImages[gem.key]) : undefined) ||
                       (gem.key === 'bloom'
-                        ? '/gems/bloom.png'
+                        ? 'gems/bloom.png'
                         : gem.key === 'stella'
-                        ? '/gems/stella.png'
+                        ? 'gems/stella.png'
                         : gem.key === 'flora'
-                        ? '/gems/flora.png'
+                        ? 'gems/flora.png'
                         : gem.key === 'musa'
-                        ? '/gems/musa.png'
+                        ? 'gems/musa.png'
                         : gem.key === 'tecna'
-                        ? '/gems/tecna.png'
+                        ? 'gems/tecna.png'
                         : gem.key === 'aisha'
-                        ? '/gems/aisha.png'
+                        ? 'gems/aisha.png'
                         : undefined);
 
                     return (
@@ -1923,8 +1923,8 @@ export const DebugMenu: React.FC<DebugMenuProps> = ({
                       tag: 'Dark Corrupted Hex',
                       color: '#a855f7',
                       imgurUrl: 'https://imgur.com/xFN0qeM',
-                      directUrl: config.enemyGem?.imageUrl || '/enemy/shadow_core.png',
-                      defaultDirect: '/enemy/shadow_core.png',
+                      directUrl: config.enemyGem?.imageUrl || 'enemy/shadow_core.png',
+                      defaultDirect: 'enemy/shadow_core.png',
                       onUpdate: (url: string) => updateEnemyGemField('imageUrl', url.trim() || undefined),
                     },
                     {
@@ -1933,8 +1933,8 @@ export const DebugMenu: React.FC<DebugMenuProps> = ({
                       tag: 'Out-of-Time Popup',
                       color: '#ec4899',
                       imgurUrl: 'https://imgur.com/tTK7L5j',
-                      directUrl: config.enemyGem?.companionImageUrl || '/enemy/companion.png',
-                      defaultDirect: '/enemy/companion.png',
+                      directUrl: config.enemyGem?.companionImageUrl || 'enemy/companion.png',
+                      defaultDirect: 'enemy/companion.png',
                       onUpdate: (url: string) => updateEnemyGemField('companionImageUrl', url.trim() || undefined),
                     },
                   ].map((asset) => (

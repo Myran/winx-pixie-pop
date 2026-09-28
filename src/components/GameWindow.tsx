@@ -507,7 +507,7 @@ export const GameWindow: React.FC<GameWindowProps> = ({
     >
       {/* Background Image: backmost layer, not interactive */}
       <img
-        src={config.backgroundImage || '/background01.jpeg'}
+        src={config.backgroundImage || 'background01.jpeg'}
         alt="Alfea College Campus Background"
         aria-hidden="true"
         draggable={false}

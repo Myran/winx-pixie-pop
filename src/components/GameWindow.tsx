@@ -66,7 +66,8 @@ export const GameWindow: React.FC<GameWindowProps> = ({
   const overdriveIntervalRef = useRef<number | null>(null);
 
   // Timer state management (default 1 minute = 60s)
-  const timerDuration = config.timer?.duration ?? 60;
+  const timerDuration =
+    (config.timer?.duration ?? 60) + (levelKey === 1 ? config.timer?.firstLevelBonus ?? 0 : 0);
   const timeRemainingRef = useRef<number>(timerDuration);
   const [isTimeFrozen, setIsTimeFrozen] = useState(false);
   const [frozenTimeRemaining, setFrozenTimeRemaining] = useState(0);
@@ -266,7 +267,7 @@ export const GameWindow: React.FC<GameWindowProps> = ({
   // Reset or fill energy & randomize 3 powerups when level changes
   useEffect(() => {
     energyRef.current = maxEnergy;
-    timeRemainingRef.current = config.timer?.duration ?? 60;
+    timeRemainingRef.current = timerDuration;
     setIsTimeFrozen(false);
     setFrozenTimeRemaining(0);
     setShowEndGameModal(false);
@@ -282,7 +283,7 @@ export const GameWindow: React.FC<GameWindowProps> = ({
       piff: config.powerups?.defaultCharges ?? 3,
     });
     setActivePowerup(null);
-  }, [levelKey, maxEnergy, config.powerups, config.timer?.duration]);
+  }, [levelKey, maxEnergy, config.powerups, timerDuration]);
 
   // Listen for external trigger (e.g. from debug menu) to preview End Game modal
   useEffect(() => {
@@ -464,11 +465,11 @@ export const GameWindow: React.FC<GameWindowProps> = ({
     if (onNewLevel) {
       onNewLevel();
     } else {
-      timeRemainingRef.current = config.timer?.duration ?? 60;
+      timeRemainingRef.current = timerDuration;
       energyRef.current = maxEnergy;
       handleReplenishCharges();
     }
-  }, [onNewLevel, config.timer?.duration, maxEnergy, handleReplenishCharges]);
+  }, [onNewLevel, timerDuration, maxEnergy, handleReplenishCharges]);
 
   // Keyboard shortcut listener for whichever 3 powerup cards are currently displayed
   useEffect(() => {
@@ -637,7 +638,7 @@ export const GameWindow: React.FC<GameWindowProps> = ({
         <TimerBar
           config={config.timer}
           timeRemainingRef={timeRemainingRef}
-          totalDuration={config.timer.duration ?? 60}
+          totalDuration={timerDuration}
           isFrozen={isTimeFrozen}
           isPaused={isPaused}
           frozenSecondsRemaining={frozenTimeRemaining}

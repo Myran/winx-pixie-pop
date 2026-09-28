@@ -167,6 +167,7 @@ export interface EnergyBarConfig {
 export interface TimerBarConfig {
   enabled: boolean;
   duration: number; // Duration in seconds (default 60 for 1 minute)
+  firstLevelBonus?: number; // Extra seconds on level 1 only (default 0)
   barWidth?: number; // Width in px (defaults to match energy bar)
   barHeight?: number; // Height in px (default 18)
   barTop?: number; // Distance from top of screen in px (default 134, just below energy bar)
